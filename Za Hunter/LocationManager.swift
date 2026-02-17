@@ -1,0 +1,20 @@
+//
+//  LocationManager.swift
+//  Za Hunter
+//
+//  Created by Christian Collins on 2/17/26.
+//
+
+import Foundation
+import CoreLocation
+
+@Observable
+class LocationManager: NSObject, CLLocationManagerDelegate {
+    var locationManager = CLLocationManager()
+    override init() {
+        super.init()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+}

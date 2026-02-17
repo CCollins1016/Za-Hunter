@@ -6,10 +6,18 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ContentView: View {
+    @State private var startPosition = MapCameraPosition.userLocation(fallback: .automatic)
+    @State private var mapRegion = MKCoordinateRegion()
     var body: some View {
-        VStack {
+        NavigationView {
+            Map(position: $startPosition) {
+            UserAnnotation()
+            }
+            .navigationBarTitle("'Za Hunter", displayMode: .inline)
+            .toolbarBackground(.hidden, for: .navigationBar)
         }
     }
 }
